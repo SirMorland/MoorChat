@@ -8,7 +8,7 @@ if($post != "")
 }
 else if($_COOKIE["nick"] == "")
 {
-	header("Location: http://users.jyu.fi/~vivakank/chat/");
+	header("Location: http://moorchat.azurewebsites.net/");
 	die();
 }
 ?>

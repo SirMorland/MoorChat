@@ -1,0 +1,326 @@
+html
+{
+	height: 100vh;
+	margin:0px;
+	padding:0px;
+}
+
+body
+{	
+	background-repeat: no-repeat;
+	background-position: center;
+	margin:0px;
+	padding:0px;
+	
+	font-family: "Courier New", Courier, monospace;
+	font-weight: 100;
+}
+
+@media (min-aspect-ratio:3/2)
+{
+	body{
+		background-size:100%;
+	}
+}
+@media (max-aspect-ratio:3/2)
+{
+	body
+	{
+		background-size:auto 100vh;
+	}
+}
+
+input
+{
+	font-family: "Courier New", Courier, monospace;
+	font-weight: 100;
+	font-size:100%;
+}
+
+#nick
+{
+	width:10%;
+	min-width: 100px;
+	border: none;
+    border-bottom: 2px solid #a00;
+	background-color: RGBA(0,0,0,0.25);
+	
+	color: white;
+	font-size: 200%;
+	
+	display:block;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	
+	padding: 0px;
+	margin: 0px;
+	
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+#nick:focus
+{
+	width:320px;
+	outline:none;
+}
+
+#channels
+{
+	width: 0px;
+	border: none;
+    border-bottom: 2px solid #a00;
+	background-color: RGBA(255,255,255,0.25);
+	
+	background-image: url('searchicon.png');
+	background-size:16px;
+	background-position: 0;
+	background-repeat: no-repeat;
+	
+	color: white;
+	
+	padding: 0px;
+	padding-left: 16px;
+    margin: 0px;
+	
+	-webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#channels:focus
+{
+	width: calc(100% - 16px);
+	outline:none;
+}
+
+h1
+{
+	font-size:200%;
+	color:white;
+	margin:0px;
+	padding:4px;
+	font-weight:500;
+	text-align:center;
+}
+
+p
+{
+	color:white;
+	margin:0px;
+	padding:4px;
+	font-weight:400;
+}
+
+hr
+{
+	border-color:#a00;
+}
+
+div
+{
+	position:absolute;
+	margin:0px;
+	padding-left:4px;
+	padding-right:4px;
+	height:100vh;
+	
+	box-shadow: 4px 0px 4px #000;
+	
+	overflow-y:auto;
+}
+
+::-webkit-scrollbar-track
+{
+	background:transparent;
+}
+::-webkit-scrollbar
+{
+	width: 4px;
+	background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: RGBA(255,255,255,0);
+	
+	-webkit-transition: background-color 2.5s ease-in-out;
+	transition: background-color 2.5s ease-in-out;
+}
+
+div:hover::-webkit-scrollbar-thumb
+{
+	background-color: RGBA(255,255,255,0.5);
+	-webkit-transition: background-color 2.5s ease-in-out;
+	transition: background-color 2.5s ease-in-out;
+}
+
+.column-left
+{
+	background-color: RGBA(170,0,0,1);
+}
+.column-right
+{
+	background-color: RGBA(0,0,0,0.5);
+}
+
+ul
+{	
+	padding: 0px;
+	margin: 0px;
+}
+li
+{
+	list-style-type:none;
+	padding: 0px;
+	margin: 0px;
+}
+
+#newChannelButton
+{
+    margin:10px;
+    background-color:#fff;
+    overflow:none;
+    float:left;
+    width:64px;
+    height:64px;
+	border-radius:32px;
+	
+	padding: 0px;
+	margin: 0px;
+}
+span
+{
+    width:64px;
+    height:64px;
+	border-radius:32px;
+	font-size:64px;
+	text-align:center;
+	display:block;
+	position:relative;
+	top:50%;
+	transform:translate(0%, -50%);
+	
+	padding: 0px;
+	margin: 0px;
+	
+	-webkit-user-select: none;
+	box-shadow: 0px 8px 8px #000;
+}
+#newChannelButton input[type=checkbox]
+{
+	display:none;
+	padding: 0px;
+	margin: 0px;
+}
+#newChannelForm
+{
+	overflow:hidden;
+	display:block;
+	position:fixed;
+	background-color:#fff;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+		
+	width:320px;
+	height:80px;
+	
+	padding: 0px;
+	margin: 0px;
+		
+	box-shadow: 0px 16px 16px #000;
+}
+#newChannelForm h2
+{
+	font-size:200%;
+	text-align:center;
+	
+	color:#fff;
+	background-color:#a00;
+	width:100%;
+	
+	padding: 4px;
+	margin: 0px;
+	
+	box-shadow: 0px 4px 4px #000;
+}
+#newChannelForm label
+{
+	padding:0px;
+	margin:4px;
+	margin-top:8px;
+	margin-bottom:0px;
+	float:left;
+}
+#newChannelForm input
+{
+	padding:0px;
+	margin:4px;
+	margin-top:8px;
+	margin-bottom:0px;
+	width:90%;
+	float:right;
+}
+
+@media (min-width:640px)
+{
+	.column-left
+	{
+		width: 312px;
+		z-index:1;
+	}
+	.column-right
+	{
+		right:0%;
+		width: calc(100% - 328px);
+		z-index:0;
+	}
+	
+	#newChannelFormOuter
+	{
+		display:none;
+		position:fixed;
+		background-color:RGBA(0,0,0,0.5);
+		top:0%;
+		left:0%;
+		width:100%;
+		height:100%;
+	}
+	input[type=checkbox]:checked ~ div#newChannelFormOuter
+	{
+		display:block;
+	}
+}
+@media (max-width:639px)
+{
+	.column-left
+	{
+		width: calc(100% - 8px);
+		z-index:1;
+	}
+	.column-right
+	{
+		width: calc(100% - 8px);
+		z-index:0;
+	}
+	#newChannelFormOuter
+	{
+		display:none;
+		position:fixed;
+		background-color:RGBA(0,0,0,0.5);
+		top:0%;
+		left:0%;
+		width:100%;
+		height:100%;
+	}
+	input[type=checkbox]:checked ~ div#newChannelFormOuter
+	{
+		display:block;
+	}
+}
+input[type=checkbox]:checked + span
+{
+	background-color:#aaa;
+	box-shadow: 0px 4px 4px #000;
+}

@@ -11,6 +11,30 @@ else if($_COOKIE["nick"] == "")
 	header("Location: http://moorchat.azurewebsites.net/");
 	die();
 }
+
+$server = getenv("SQLCONNSTR_server");
+$user = getenv("SQLCONNSTR_user");
+$pwd = getenv("SQLCONNSTR_pwd");
+
+try
+{
+	$conn = new PDO("sqlsrv:server = tcp:$server,1433; Database = moorchat_log",
+		$user, $pwd);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $e)
+{
+	
+}
+
+$newChannelName = htmlspecialchars($_POST["channelName"]);
+if($newChannelName != "")
+{
+	$sql = "INSERT INTO Channels (C_Name)
+			VALUES ('$newChannelName')";
+	$conn->query($sql);
+}
+
 ?>
 <html lang="en">
 	<head>
@@ -37,7 +61,20 @@ else if($_COOKIE["nick"] == "")
 			</form>
 			<ul>
 				<?php
+					class TableRows extends RecursiveIteratorIterator { 
+					    function __construct($it) { 
+					        parent::__construct($it, self::LEAVES_ONLY); 
+					    }
+					}
+					$query = $conn->prepare('SELECT * FROM Channels');
+					$query->execute();
+					$result = $query->fetchAll();
 					
+					for($i = 0; $i < sizeof($result); $i++)
+					{
+						$c_name = $result[$i][1];
+						echo "<li><h2>#$c_name</h2></li>";
+					}
 				?>
 				<li>
 					<label id="newChannelButton">
